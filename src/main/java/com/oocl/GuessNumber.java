@@ -6,17 +6,18 @@ public class GuessNumber {
 
 	private int remainingInputChance;
 	private String randomAnswer;
+	private boolean isAllCorrect;
+
+	public boolean isAllCorrect() {
+		return isAllCorrect;
+	}
+
+	public void setAllCorrect(boolean allCorrect) {
+		isAllCorrect = allCorrect;
+	}
 
 	public String getRandomAnswer() {
 		return randomAnswer;
-	}
-
-	public void setRandomAnswer(String randomAnswer) {
-		this.randomAnswer = randomAnswer;
-	}
-
-	public int getRemainingInputChance() {
-		return remainingInputChance;
 	}
 
 	public void setRemainingInputChance(int remainingInputChance) {
@@ -26,6 +27,7 @@ public class GuessNumber {
 	public void initializeGame() {
 		generateRandomAnswer();
 		setRemainingInputChance(6);
+		setAllCorrect(false);
 	}
 
 	public void generateRandomAnswer() {
@@ -66,6 +68,8 @@ public class GuessNumber {
 				}
 			}
 		}
+		if (numberOfCorrectDigit == input.length())
+			this.isAllCorrect = true;
 		return numberOfCorrectDigit + "A" + numberOfWrongPositionDigit + "B";
 	}
 
