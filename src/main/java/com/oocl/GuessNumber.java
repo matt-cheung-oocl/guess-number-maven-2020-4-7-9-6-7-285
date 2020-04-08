@@ -4,7 +4,31 @@ import java.util.Random;
 
 public class GuessNumber {
 
-	public String generateRandomAnswer() {
+	private int remainingInputChance;
+	private String randomAnswer;
+
+	public String getRandomAnswer() {
+		return randomAnswer;
+	}
+
+	public void setRandomAnswer(String randomAnswer) {
+		this.randomAnswer = randomAnswer;
+	}
+
+	public int getRemainingInputChance() {
+		return remainingInputChance;
+	}
+
+	public void setRemainingInputChance(int remainingInputChance) {
+		this.remainingInputChance = remainingInputChance;
+	}
+
+	public void initializeGame() {
+		generateRandomAnswer();
+		setRemainingInputChance(6);
+	}
+
+	public void generateRandomAnswer() {
 		String randomAnswer = "";
 		for (int count = 0; count < 4; count++) {
 			String randomDigit = String.valueOf((new Random().nextInt(10)));
@@ -13,10 +37,11 @@ public class GuessNumber {
 			}
 			randomAnswer += randomDigit;
 		}
-		return randomAnswer;
+		this.randomAnswer = randomAnswer;
 	}
 
 	public boolean validateInput(String input) {
+		setRemainingInputChance(remainingInputChance - 1);
 		if (input.length() != 4)
 			return false;
 		for (int digit1 = 0; digit1 < input.length(); digit1++) {
@@ -28,12 +53,12 @@ public class GuessNumber {
 		return true;
 	}
 
-	public String compareAnswer(String randomAnswer, String input) {
+	public String compareAnswer(String input) {
 		int numberOfCorrectDigit = 0;
 		int numberOfWrongPositionDigit = 0;
 		for (int inputDigit = 0; inputDigit < input.length(); inputDigit++) {
-			for (int answerDigit = 0; answerDigit < randomAnswer.length(); answerDigit++) {
-				if (randomAnswer.charAt(answerDigit) == input.charAt(inputDigit)) {
+			for (int answerDigit = 0; answerDigit < this.randomAnswer.length(); answerDigit++) {
+				if (this.randomAnswer.charAt(answerDigit) == input.charAt(inputDigit)) {
 					if (inputDigit == answerDigit)
 						numberOfCorrectDigit++;
 					else
@@ -42,5 +67,12 @@ public class GuessNumber {
 			}
 		}
 		return numberOfCorrectDigit + "A" + numberOfWrongPositionDigit + "B";
+	}
+
+	public boolean isGameover() {
+		if (this.remainingInputChance == 0)
+			return true;
+		else
+			return false;
 	}
 }

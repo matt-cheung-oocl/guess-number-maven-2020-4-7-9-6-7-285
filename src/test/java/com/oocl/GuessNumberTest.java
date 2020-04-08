@@ -8,8 +8,8 @@ public class GuessNumberTest {
 	@Test
 	public void should_return_random_answer() {
 		GuessNumber guessNumber = new GuessNumber();
-
-		String randomAnswer = guessNumber.generateRandomAnswer();
+		guessNumber.generateRandomAnswer();
+		String randomAnswer = guessNumber.getRandomAnswer();
 		System.out.println(randomAnswer);
 	}
 
@@ -26,11 +26,11 @@ public class GuessNumberTest {
 	public void should_return_correct_output() {
 		GuessNumber guessNumber = new GuessNumber();
 
-		assertEquals("4A0B", guessNumber.compareAnswer("1234", "1234"));
-		assertEquals("1A0B", guessNumber.compareAnswer("1234", "1567"));
-		assertEquals("0A2B", guessNumber.compareAnswer("1234", "2478"));
-		assertEquals("1A2B", guessNumber.compareAnswer("1234", "0324"));
-		assertEquals("0A0B", guessNumber.compareAnswer("1234", "5678"));
-		assertEquals("0A4B", guessNumber.compareAnswer("1234", "4321"));
+		assertEquals("4A0B", guessNumber.compareAnswer("1234"));
+		assertEquals("1A0B", guessNumber.compareAnswer("1567"));
+		assertEquals("0A2B", guessNumber.compareAnswer("2478"));
+		assertEquals("1A2B", guessNumber.compareAnswer("0324"));
+		assertEquals("0A0B", guessNumber.compareAnswer("5678"));
+		assertEquals("0A4B", guessNumber.compareAnswer("4321"));
 	}
 }
