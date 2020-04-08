@@ -20,6 +20,10 @@ public class GuessNumber {
 		return randomAnswer;
 	}
 
+	public int getRemainingInputChance() {
+		return remainingInputChance;
+	}
+
 	public void setRemainingInputChance(int remainingInputChance) {
 		this.remainingInputChance = remainingInputChance;
 	}
@@ -73,7 +77,7 @@ public class GuessNumber {
 		return numberOfCorrectDigit + "A" + numberOfWrongPositionDigit + "B";
 	}
 
-	public boolean isGameover() {
+	public boolean isGameOver() {
 		if (this.remainingInputChance == 0)
 			return true;
 		else

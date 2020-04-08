@@ -2,9 +2,6 @@ package com.oocl;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- */
 public class App {
 	public static void main(String[] args) {
 
@@ -13,7 +10,8 @@ public class App {
 
 		guessNumber.initializeGame();
 
-		while (!guessNumber.isGameover()) {
+		while (!guessNumber.isGameOver()) {
+			System.out.println("Please Input Your Answer... Input Chance Remaining: " + guessNumber.getRemainingInputChance());
 			String input = scanner.nextLine();
 
 			if (guessNumber.validateInput(input))
@@ -22,9 +20,9 @@ public class App {
 				System.out.println("Wrong Input，Input again");
 
 			if (guessNumber.isAllCorrect()) {
-          System.out.println("win, all correct");
-          System.exit(0);
-      }
+				System.out.println("win, all correct");
+				System.exit(0);
+			}
 		}
 	}
 }
