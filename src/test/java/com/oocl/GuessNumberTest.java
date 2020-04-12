@@ -8,8 +8,8 @@ public class GuessNumberTest {
 	@Test
 	public void should_return_random_answer() {
 		GuessNumber guessNumber = new GuessNumber();
-		guessNumber.generateRandomAnswer();
-		String randomAnswer = guessNumber.getRandomAnswer();
+		RandomAnswerGenerator randomAnswerGenerator = new RandomAnswerGenerator();
+		String randomAnswer = randomAnswerGenerator.generate();
 		System.out.println(randomAnswer);
 	}
 

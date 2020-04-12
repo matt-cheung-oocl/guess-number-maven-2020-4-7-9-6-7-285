@@ -11,7 +11,7 @@ public class App {
 		guessNumber.initializeGame();
 
 		while (!guessNumber.isGameOver()) {
-			System.out.println("Please Input Your Answer... Input Chance Remaining: " + guessNumber.getRemainingInputChance());
+			System.out.println("Please Input Your 4-digit Answer... Input Chance Remaining: " + guessNumber.getRemainingInputChance());
 			String input = scanner.nextLine();
 
 			if (guessNumber.validateInput(input))
