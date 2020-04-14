@@ -7,7 +7,6 @@ public class App {
 
 		Scanner scanner = new Scanner(System.in);
 		GuessNumber guessNumber = new GuessNumber(new RandomAnswerGenerator());
-
 		guessNumber.initializeGame();
 
 		while (!guessNumber.isGameOver()) {

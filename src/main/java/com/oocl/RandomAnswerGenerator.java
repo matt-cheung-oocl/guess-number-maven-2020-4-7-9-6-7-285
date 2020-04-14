@@ -9,14 +9,14 @@ public class RandomAnswerGenerator {
 	public static final int MAX_NUMBER = 10;
 
 	public String generate() {
-		String randomAnswer = "";
+		StringBuilder randomAnswer = new StringBuilder();
 		for (int count = 0; count < ANSWER_LENGTH; count++) {
 			String randomDigit = String.valueOf((new Random().nextInt(MAX_NUMBER)));
-			while (randomAnswer.contains(randomDigit)) {
+			while (randomAnswer.toString().contains(randomDigit)) {
 				randomDigit = String.valueOf((new Random().nextInt(MAX_NUMBER)));
 			}
-			randomAnswer += randomDigit;
+			randomAnswer.append(randomDigit);
 		}
-		return randomAnswer;
+		return randomAnswer.toString();
 	}
 }
