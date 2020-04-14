@@ -2,8 +2,8 @@ package com.oocl;
 
 public class GuessNumber {
 
-	public static final int ANSWER_LENGTH = 4;
-	public static final int STARTING_INPUT_CHANCE = 6;
+	static final int ANSWER_LENGTH = 4;
+	private static final int STARTING_INPUT_CHANCE = 6;
 	private int remainingInputChance;
 	private String randomAnswer;
 	private boolean isAllCorrect;
@@ -46,23 +46,23 @@ public class GuessNumber {
 		return true;
 	}
 
-	public String compareAnswer(String input) {
+	public String compareAnswer(String inputNumbers) {
 		int numberOfCorrectDigit = 0;
 		int numberOfWrongPositionDigit = 0;
 
-		for (int inputDigit = 0; inputDigit < input.length(); inputDigit++) {
-			for (int answerDigit = 0; answerDigit < this.randomAnswer.length(); answerDigit++) {
-				if (this.randomAnswer.charAt(answerDigit) == input.charAt(inputDigit)) {
-					if (inputDigit == answerDigit) {
-						numberOfCorrectDigit++;
-					}
-					else {
-						numberOfWrongPositionDigit++;
-					}
-				}
+		for (char number : inputNumbers.toCharArray()) {
+			boolean isPositionAndNumberCorrect = this.randomAnswer.contains(Character.toString(number))
+							&& this.randomAnswer.indexOf(number) == inputNumbers.indexOf(number);
+			boolean isNumberCorrectWithWrongPosition = this.randomAnswer.contains(Character.toString(number))
+							&& this.randomAnswer.indexOf(number) != inputNumbers.indexOf(number);
+			if (isPositionAndNumberCorrect) {
+				numberOfCorrectDigit++;
+			}
+			if (isNumberCorrectWithWrongPosition) {
+				numberOfWrongPositionDigit++;
 			}
 		}
-		if (numberOfCorrectDigit == input.length()) {
+		if (numberOfCorrectDigit == inputNumbers.length()) {
 			this.isAllCorrect = true;
 		}
 		return numberOfCorrectDigit + "A" + numberOfWrongPositionDigit + "B";
