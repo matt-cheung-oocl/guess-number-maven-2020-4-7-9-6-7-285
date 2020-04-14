@@ -8,6 +8,8 @@ public class GuessNumber {
 	private String randomAnswer;
 	private boolean isAllCorrect;
 
+	public GuessNumber(RandomAnswerGenerator randomAnswerGenerator) { this.randomAnswer = randomAnswerGenerator.generate(); }
+
 	public boolean isAllCorrect() {
 		return isAllCorrect;
 	}
@@ -24,9 +26,12 @@ public class GuessNumber {
 		this.remainingInputChance = remainingInputChance;
 	}
 
+	public boolean isGameOver() {
+		return this.remainingInputChance == 0;
+	}
+
+
 	public void initializeGame() {
-		RandomAnswerGenerator randomAnswerGenerator = new RandomAnswerGenerator();
-		this.randomAnswer = randomAnswerGenerator.generate();
 		setRemainingInputChance(STARTING_INPUT_CHANCE);
 		setAllCorrect(false);
 	}
@@ -66,9 +71,5 @@ public class GuessNumber {
 			this.isAllCorrect = true;
 		}
 		return numberOfCorrectDigit + "A" + numberOfWrongPositionDigit + "B";
-	}
-
-	public boolean isGameOver() {
-		return this.remainingInputChance == 0;
 	}
 }
