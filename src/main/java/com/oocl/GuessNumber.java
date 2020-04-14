@@ -36,14 +36,14 @@ public class GuessNumber {
 		setAllCorrect(false);
 	}
 
-	public boolean validateInput(String input) {
+	public boolean validateInput(String inputNumbers) {
 		setRemainingInputChance(remainingInputChance - 1);
-		if (input.length() != ANSWER_LENGTH) {
+		if (inputNumbers.length() != ANSWER_LENGTH) {
 			return false;
 		}
-		for (int digit1 = 0; digit1 < input.length(); digit1++) {
-			for (int digit2 = digit1 + 1; digit2 < input.length(); digit2++) {
-				if (input.charAt(digit1) == input.charAt(digit2)) {
+		for (int digit1 = 0; digit1 < inputNumbers.length(); digit1++) {
+			for (int digit2 = digit1 + 1; digit2 < inputNumbers.length(); digit2++) {
+				if (inputNumbers.charAt(digit1) == inputNumbers.charAt(digit2)) {
 					return false;
 				}
 			}
