@@ -11,10 +11,10 @@ public class App {
 
 		while (!guessNumber.isGameOver()) {
 			System.out.println("Please Input Your 4-digit Answer... Input Chance Remaining: " + guessNumber.getRemainingInputChance());
-			String input = scanner.nextLine();
+			String inputAnswer = scanner.nextLine();
 
-			if (guessNumber.validateInput(input))
-				System.out.println(guessNumber.compareAnswer(input));
+			if (guessNumber.validateInput(inputAnswer))
+				System.out.println(guessNumber.compareAnswer(inputAnswer));
 			else
 				System.out.println("Wrong Input，Input again");
 
